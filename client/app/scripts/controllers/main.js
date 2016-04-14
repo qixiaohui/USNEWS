@@ -8,11 +8,17 @@
  * Controller of the dingdangApp
  */
 angular.module('dingdangApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    debugger;
+  .controller('MainCtrl', function (newsService, $scope) {
+    $scope.news = [];
+    
+    var promise = new Promise(function(resolve, reject){
+        newsService.readNews(resolve, reject);
+    });
+    
+    promise.then(function(data){
+        $scope.news = data[0].items;
+        $scope.$digest();
+    }).catch(function(err){
+        console.error(JSON.stringify(err));
+    });
   });
