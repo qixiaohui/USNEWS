@@ -23,7 +23,9 @@ var insertCollection = function(data, tableName, db){
 	//first drop the collection no matter exist or not
 	collection.drop();
 	console.log("insert db "+tableName);
-	collection.insert(data);
+	collection.insert(data,function(){
+        console.log("Successfully inserted "+tableName);
+    });
 };
 
 exports.readNews = function(tableName, resolve, reject){

@@ -21,12 +21,17 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('base', {
-        url: '/',
+        url: '/base',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      });
+      })
+      .state('content', {
+        url: '/content',
+        templateUrl: 'views/content.html',
+        controller: 'ContentCtrl'
+    });
     
       $urlRouterProvider.otherwise(
-        '/'
+        '/base'
       );
   });

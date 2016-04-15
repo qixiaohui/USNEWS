@@ -20,6 +20,7 @@
     "morgan": "^1.7.0",
     "promised-mongo": "^1.2.0",
     "request": "^2.71.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "x-ray": "^2.2.0"
   }
 }
