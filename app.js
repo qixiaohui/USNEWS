@@ -1,7 +1,7 @@
 (function(){
 	'use strict'
 	var express = require('express');
-	var rateLimit = require('express-rate-limit');
+	//var rateLimit = require('express-rate-limit');
 	var app = express();
 	var bodyParser = require('body-parser');
 	var compress = require('compression');
@@ -19,7 +19,7 @@
 	app.use(logger('dev'));
 	app.enable('trust proxy');
 
-	var limitter = rateLimit({});
+	//var limitter = rateLimit({});
 	var readNews = function(req, res){
 		console.log("news reader");
 		reader.readNews(req.params.tablename, res);
@@ -31,7 +31,7 @@
 		scraper.scrape(req, res, link);
 	};
 
-	app.use(limitter);
+	//app.use(limitter);
 
 	app.use(cors());
 

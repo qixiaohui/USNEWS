@@ -75,6 +75,12 @@
     background: rgba(255,255,255,0.2);
 }
 
+.sidebarSelected{
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);    
+}
+
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
@@ -121,4 +127,11 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+.loadingIcon{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0px 0px -50px;
 }

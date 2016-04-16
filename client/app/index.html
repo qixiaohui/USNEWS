@@ -57,13 +57,17 @@
                     Dingdang news
                 </a>
             </li>
-            <li ng-repeat='category in newsCategories'>
+            <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in newsCategories'>
                 <a ng-click="checkCache($index)">{{category}}</a>
             </li>
         </ul>
     </div>
 
     <div class="container">
+        
+    <div class="loadingIcon" ng-show="loadingControl.loading">
+        <img src="images/loading.gif" />
+    </div>
     <div ui-view></div>
     </div>
 
