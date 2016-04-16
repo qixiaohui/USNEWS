@@ -1,7 +1,10 @@
 <div class="row marketing">
-    <div ng-repeat="section in paragraph.p">
-        <p ng-bind-html="section.paragraph"></p>
+    <div>
+        <h2>{{paragraph.content.title}}</h2>
     </div>
-    <div ng-bind-html="content.html">
+    <div style="float: right; padding-right: 20px">
+        <p style="color: #5d5f60">{{paragraph.content.publishedDate}}</p>
+    </div>
+    <div style="padding-top: 30px" ng-bind-html="paragraph.p">
     </div>
 </div>

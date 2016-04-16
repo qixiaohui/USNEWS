@@ -1,9 +1,9 @@
 <div ng-repeat="new in news" class="row marketing">
     <div class="col-md-3" style="marginTop: 10dp">
-        <img class="img-responsive" ng-src="{{}}">
+        <img class="img-responsive" ng-src="{{new.image.url}}">
     </div>
     <div class="col-md-9" href="new.link" ng-click="viewContent(new)">
         <h4>{{new.title}}</h4>
-        <p style="color: #5d5f60" ng-bind-html="new.contentSnippet"></p>
+        <p style="color: #5d5f60" ng-bind-html="new.content"></p>
     </div>
 </div>
