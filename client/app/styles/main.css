@@ -81,3 +81,13 @@ body {
     border-bottom: 0;
   }
 }
+
+.btn-secondary {
+    background-color: #ffffff;
+    border-color: #dcdcdc;
+}
+
+.btn-secondary:hover{
+    background-color: #f3f3f3;
+    border-color: #dcdcdc;
+}

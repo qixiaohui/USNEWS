@@ -22,7 +22,7 @@ var fetchNews = function(){
 				setTimeout(function(){
 					console.log("request url"+url);
 					request(url, function(error, response, body){
-						if(!error && response.statusCode === 200){
+						if(!error && response.statusCode === 200 && JSON.parse(body).status === 'OK'){
 							console.log("response"+JSON.parse(body));
 							callback(JSON.parse(body), parentKey, childKey);
 						}
