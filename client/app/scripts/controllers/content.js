@@ -15,12 +15,14 @@ angular.module('dingdangApp')
     $scope.paragraph.content = newsService.getContent();
     
     var promise = new Promise(function(resolve, reject){
-        newsService.readContent(resolve, reject, newsService.getContent().unescapedUrl);
+        newsService.readContent(resolve, reject, newsService.getContent().source.enriched.url.url);
     });
     
     promise.then(function(data){
+        debugger;
         console.log(data.data);
         if(data !== {}){
+            debugger;
             $scope.paragraph.p = data.data;
             $scope.loadingControl.loading = false;
             $scope.$apply();

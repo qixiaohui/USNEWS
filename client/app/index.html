@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in newsCategories'>
-                <a ng-click="checkCache($index)">{{category}}</a>
+                <a ng-click="getDatastoreNews($index, null)">{{category}}</a>
             </li>
         </ul>
     </div>
@@ -111,6 +111,7 @@
       <script src="scripts/controllers/category.js"></script>
         <script src="scripts/directives/carddirective.js"></script>
         <script src="scripts/services/service.js"></script>
+      <script src="scripts/filter/filter.js"></script>
         <!-- endbuild -->
 </body>
 </html>

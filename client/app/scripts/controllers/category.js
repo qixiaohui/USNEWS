@@ -13,45 +13,43 @@ angular.module('dingdangApp')
     $scope.newsCategories = newsCategory;
     var index = dataStore.getCategory();
     $scope.selectedCategory = {};
+    $scope.loadingPagination = {maxIndex:0,pageIndex:1,show:true};
     $scope.selectedCategory.value = $scope.newsCategories[index];
-    $scope.news = dataStore.getTopStory($scope.selectedCategory);
     
     //this will get called either first time load page
     // or from the side bar buttons
-    $scope.getDatastoreNews = function(index){
+    $scope.getDatastoreNews = function(index, pageIndex){
+        if(index === null){
+            index = dataStore.getCategory();
+        }
+        
+        if(pageIndex === null){
+            pageIndex = dataStore.getPageIndex(index);
+        }
+        $scope.loadingControl.loading = true;
+        $scope.selectedCategory.value = $scope.newsCategories[index];
         dataStore.setCategory(index);
+        dataStore.setPageIndex(index, pageIndex);
         var promise = new Promise(function(resolve, reject){
-            newsService.readNews(resolve, reject, index);
+            newsService.readNews(resolve, reject, index, pageIndex);
         });
 
         promise.then(function(data){
             $scope.loadingControl.loading = false;
-            $scope.news = data[0].responseData.results;
-            // cache all the category stories in datasore
-            // param: key, value 
-            dataStore.setTopStory($scope.newsCategories[index], $scope.news);
+            $scope.news = data[0].result.docs;
+            $scope.loadingPagination.pageIndex = data.responseData.cursor.currentPageIndex+1;
+            $scope.pagination(data.responseData.cursor.estimatedResultCount);
             $scope.$digest();
         }).catch(function(err){
             console.error(JSON.stringify(err));
         });        
     };
     
-    // check if the specific category exists
-    $scope.checkCache = function(index){
-        $location.path("/base");
-        $scope.loadingControl.loading = true;
-        $scope.selectedCategory.value = $scope.newsCategories[index];
-        var cacheResult = dataStore.getTopStory($scope.selectedCategory.value);
-        if( cacheResult !== null){
-            $scope.loadingControl.loading = false;
-            $scope.news = cacheResult.value;
-        }else{
-            $scope.getDatastoreNews(index);
-        }
+    $scope.pagination = function(maxCount){
+        $scope.loadingPagination.show = true;
+        $scope.loadingPagination.maxIndex = parseInt(maxCount/8);
     };
     
-    if($scope.news === null){
-        $scope.getDatastoreNews(index);
-    }
+    $scope.getDatastoreNews(index, dataStore.getPageIndex(index));
 
   });

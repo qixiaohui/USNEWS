@@ -11,6 +11,7 @@ exports.scrape = function(req, res, link){
 		if(err){
 			res.send({});
 		}else{
+			console.log(article.content);
 			if(article.content){
 				console.log("content");
 				res.send(article.content);

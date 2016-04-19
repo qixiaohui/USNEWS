@@ -9,25 +9,24 @@
  */
 angular.module('dingdangApp')
   .service('newsService', function ($http) {
-    this.queryUrl = "http://localhost:2000/news/";
+    this.queryUrl = [
+    "http://localhost:2000/news/technology_linux",
+    "http://localhost:2000/news/technology_arm",
+    "http://localhost:2000/news/technology_ios",
+    "http://localhost:2000/news/technology_android",
+    "http://localhost:2000/news/technology_x86",
+    "http://localhost:2000/news/technology_cloud"
+    ];
     this.contentUrl = "http://localhost:2000/content";
     this.content = "";
     
-    // AngularJS will instantiate a singleton by calling "new" on this function
-    this.topics = {google: ['google_topheadlines', 
-                            'google_worldNews', 
-                            'google_businessNews', 
-                            'google_nationNews', 
-                            'google_technology', 
-                            'google_election', 
-                            'google_politicsNews', 
-                            'google_entertainmentNews',
-                            'google_sportNews',
-                            'google_healthNews']};
-    this.readNews = function(resolve, reject, index){
-        $http.get(this.queryUrl+this.topics.google[index]).success(function(data){
-            resolve(data);
-        }).error(function(err){
+    this.readNews = function(resolve, reject, index, pageIndex){
+        $http({
+            method: 'GET',
+            url: this.queryUrl[index]
+        }).then(function(data){
+            resolve(data.data);
+        },function(err){
             reject(err);
         });
     };
@@ -40,6 +39,7 @@ angular.module('dingdangApp')
             'link': link
           }
         }).then(function(data){
+            debugger;
             resolve(data);
         },function(err){
             reject(err);
@@ -57,47 +57,40 @@ angular.module('dingdangApp')
 
 // this will store the top stories for each category
  .service('dataStore', function(){
-    this.categpry = 0;
-    this.topStory = {};
+    this.category = 0;
+    this.pageIndex = {0: 0,
+                     1: 0,
+                     2: 0,
+                     3: 0,
+                     4: 0,
+                     5: 0};
     
     this.getCategory = function(){
-        return this.categpry;
+        return this.category;
     };
     
     this.setCategory = function(category){
         this.category = category;
     };
     
-    this.getTopStory = function(key){
-        debugger;
-        if(this.topStory[key] !== undefined){
-            return this.topStory[key];
-        }else{
-            return null;
-        }
+    this.getPageIndex = function(index){
+        return this.pageIndex[index];
     };
     
-    this.setTopStory = function(key, value){
-        debugger;
-        if(this.topStory[key] === undefined){
-            this.topStory[key] = {value: value};
-        }
+    this.setPageIndex = function(index, pageIndex){
+        this.pageIndex[index] = pageIndex;
     };
 })
 
 // return news categpry
 .factory('newsCategory', function(){
     return [
-        "Top headline",
-        "World news",
-        "Business news",
-        "Nation news",
-        "Technology news",
-        "Election",
-        "Politics news",
-        "Entertainment news",
-        "Sport news",
-        "Health news"
+        "linux",
+        "arm",
+        "ios",
+        "android",
+        "x86",
+        "cloud"
     ];
 })
 ;
