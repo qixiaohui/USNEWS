@@ -1,4 +1,4 @@
-<div ng-repeat="new in news" class="row marketing">
+<div ng-repeat="new in news| limitTo:10:(loadingPagination.pageIndex-1)*10" class="row marketing">
     <div class="col-md-3" style="marginTop: 10dp">
         <img class="img-responsive" ng-src="{{new.source.enriched.url.image}}">
     </div>
@@ -9,8 +9,8 @@
 </div>
 <nav ng-show="loadingPagination.show" class="pagin col-sm-offset-5 col-sm-6">
   <ul class="pagination">
-      <li ng-show="loadingPagination.maxIndex>=1"><a ng-click="loadingPagination.pageIndex>=2?getDatastoreNews(null, loadingPagination.pageIndex-1):none" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-      <li ng-show="index-loadingPagination.pageIndex<=3&&index>0" ng-repeat="index in [] | range:loadingPagination.maxIndex+1" ng-class="{'active':index==loadingPagination.pageIndex}"><a ng-click="getDatastoreNews(null, index-1)">{{index}} </a></li>
-      <li ng-show="loadingPagination.maxIndex>=1"><a ng-click="loadingPagination.pageIndex<loadingPagination.maxIndex?getDatastoreNews(null, loadingPagination.pageIndex+1):none" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+      <li ng-show="loadingPagination.maxIndex>=1"><a ng-click="loadingPagination.pageIndex>=2?loadPage(loadingPagination.pageIndex-1):none" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+      <li ng-show="index-loadingPagination.pageIndex<=3&&index>0" ng-repeat="index in [] | range:loadingPagination.maxIndex+1" ng-class="{'active':index==loadingPagination.pageIndex}"><a ng-click="loadPage(index)">{{index}} </a></li>
+      <li ng-show="loadingPagination.maxIndex>=1"><a ng-click="loadingPagination.pageIndex<loadingPagination.maxIndex?loadPage( loadingPagination.pageIndex+1):none" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
   </ul>
 </nav>

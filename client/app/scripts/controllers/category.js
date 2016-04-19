@@ -37,17 +37,23 @@ angular.module('dingdangApp')
         promise.then(function(data){
             $scope.loadingControl.loading = false;
             $scope.news = data[0].result.docs;
-            $scope.loadingPagination.pageIndex = data.responseData.cursor.currentPageIndex+1;
-            $scope.pagination(data.responseData.cursor.estimatedResultCount);
+            $scope.loadingPagination.pageIndex = 1;
+            $scope.pagination(data[0].result.docs.length);
             $scope.$digest();
         }).catch(function(err){
             console.error(JSON.stringify(err));
+            $scope.$digest();
         });        
     };
     
     $scope.pagination = function(maxCount){
         $scope.loadingPagination.show = true;
-        $scope.loadingPagination.maxIndex = parseInt(maxCount/8);
+        $scope.loadingPagination.maxIndex = parseInt(maxCount/10);
+    };
+    
+    $scope.loadPage = function(index){
+        $scope.loadingPagination.pageIndex = index;
+        window.scrollTo(0, 0);
     };
     
     $scope.getDatastoreNews(index, dataStore.getPageIndex(index));
