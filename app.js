@@ -67,7 +67,7 @@
 
 	app.get('/content', scraping);
 
-	app.use(express.static('./client/'));
+	app.use(express.static('./client/bower_components/'));
 
 	app.use(express.static('./client/app/'));
 
