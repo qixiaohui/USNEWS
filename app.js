@@ -36,18 +36,28 @@
 		});
 
 		promise.then(function(){
-			console.log("should read news");
 			reader.readNews(id, res);
 		}).catch(function(){
-			console.log("catch");
 			scraper.scrape(req, res, link, id);
 		});
 
 	};
 
-	// var j = schedule.scheduleJob({hour: 0, minute: 30, dayOfWeek: 7}, function(){
- //  		mongoApi.cleanDB();
-	// });
+	var rule = new schedule.RecurrenceRule();
+	rule.dayOfWeek = [new schedule.Range(0, 6)];
+	rule.hour = 0;
+	rule.minute = 30;
+
+    schedule.scheduleJob(rule, function(){
+  		mongoApi.cleanDB();
+	});
+
+	var yetAnotherRule = new schedule.RecurrenceRule();
+	yetAnotherRule.hour = 4;
+
+	schedule.scheduleJob(yetAnotherRule, function(){
+  		fetcher.fetchNews();
+	});
 
 	//app.use(limitter);
 
@@ -55,12 +65,20 @@
 
 	app.get('/news/:tablename', readNews);
 
-	app.get('/content', scraping)
+	app.get('/content', scraping);
+
+	app.use(express.static('./client/'));
+
+	app.use(express.static('./client/app/'));
+
+    app.get('/', function(req, res) {
+    	res.sendfile('./client/app/index.html');
+	});
 
 	app.listen(port, function(){
 		console.log("server listening on port: "+port);
 	});
 
 	//here fetch news when the app first launch
-	//fetcher.fetchNews();
+	fetcher.fetchNews();
 })()
