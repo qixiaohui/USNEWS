@@ -6,17 +6,16 @@ var Xray = require('x-ray');
 var x = Xray();
 var read = require('node-readability');
 
-exports.scrape = function(req, res, link){
+exports.scrape = function(req, res, link, id){
 	read(link, {}, function(err, article) {
 		if(err){
 			res.send({});
 		}else{
-			console.log(article.content);
 			if(article.content){
-				console.log("content");
-				res.send(article.content);
+				mongoApi.insertContent(article.content, id);
+				res.send([{content: article.content}]);
 			}else{
-				console.log("html");
+				mongoApi.insertContent(article.html, id);
 				res.send(article.html);
 			}
 			article.close();

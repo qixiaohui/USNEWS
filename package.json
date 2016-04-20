@@ -19,6 +19,7 @@
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
     "node-readability": "^2.2.0",
+    "node-schedule": "^1.1.0",
     "promised-mongo": "^1.2.0",
     "request": "^2.71.0",
     "underscore": "^1.8.3",

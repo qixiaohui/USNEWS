@@ -28,6 +28,15 @@ var insertCollection = function(data, tableName, db){
     });
 };
 
+exports.insertContent = function(data, tableName){
+	mongoClient.connect(urls.URL.mongo_base, function(err, db){
+		var collection = db.collection(tableName);
+		collection.insert({content: data}, function(){
+			console.log("Successfully insert content "+tableName);
+		});
+	});
+};
+
 exports.readNews = function(tableName, resolve, reject){
 	mongoClient.connect(urls.URL.mongo_base, function(err, db){
 		readCollection(tableName, db, resolve, reject);
@@ -43,4 +52,35 @@ var readCollection = function(tableName, db, resolve, reject){
     	}
     	resolve(docs);
     });
+};
+
+exports.cleanDB = function(){
+	mongoClient.connect(urls.URL.mongo_base, function(err, db){
+		if(err){
+			return;
+		}
+
+		var date = new Date();
+		date.setDate(date.getDate() - 1);
+		// clear data from yesterday
+		db.user_track.remove( { access_time : {"$lt" : date } });
+
+	});
+};
+
+exports.queryCollection = function(resolve, reject, tableName){
+	mongoClient.connect(urls.URL.mongo_base, function(err, db){
+		if(err){
+			reject();
+		}
+		db.listCollections({name: tableName})
+	    .next(function(err, collinfo) {
+	    	console.log("^&*^*"+collinfo);
+	        if (collinfo) {
+				resolve();
+	        }else{
+				reject();
+	        }
+	    });
+	});
 };

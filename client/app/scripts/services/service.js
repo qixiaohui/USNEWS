@@ -30,12 +30,13 @@ angular.module('dingdangApp')
         });
     };
     
-    this.readContent = function(resolve, reject, link){
+    this.readContent = function(resolve, reject, link, id){
         $http({
           method: 'GET',
           url: this.contentUrl,
           headers: {
-            'link': link
+            'link': link,
+            'id': id
           }
         }).then(function(data){
             debugger;
