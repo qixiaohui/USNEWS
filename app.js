@@ -53,7 +53,7 @@
 	});
 
 	var yetAnotherRule = new schedule.RecurrenceRule();
-	yetAnotherRule.hour = 4;
+	yetAnotherRule.minute = 42;
 
 	schedule.scheduleJob(yetAnotherRule, function(){
   		fetcher.fetchNews();
