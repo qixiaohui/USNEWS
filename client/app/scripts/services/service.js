@@ -10,13 +10,13 @@
 angular.module('dingdangApp')
   .service('newsService', function ($http) {
     this.queryUrl = [
-    "http://localhost:2000/news/technology_linux",
-    "http://localhost:2000/news/technology_windows",
-    "http://localhost:2000/news/technology_ios",
-    "http://localhost:2000/news/technology_android",
-    "http://localhost:2000/news/technology_cloud"
+    "http://polar-sands-49796.herokuapp.com/news/technology_linux",
+    "http://polar-sands-49796.herokuapp.com/news/technology_windows",
+    "http://polar-sands-49796.herokuapp.com/news/technology_ios",
+    "http://polar-sands-49796.herokuapp.com/news/technology_android",
+    "http://polar-sands-49796.herokuapp.com/news/technology_cloud"
     ];
-    this.contentUrl = "http://localhost:2000/content";
+    this.contentUrl = "http://polar-sands-49796.herokuapp.com/content";
     this.content = "";
     
     this.readNews = function(resolve, reject, index, pageIndex){
