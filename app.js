@@ -75,7 +75,7 @@
     	res.sendfile('./client/app/index.html');
 	});
 
-	app.listen(port, function(){
+	app.listen(process.env.PORT || port, function(){
 		console.log("server listening on port: "+port);
 	});
 
