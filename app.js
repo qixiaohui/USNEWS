@@ -43,21 +43,6 @@
 
 	};
 
-	var rule = new schedule.RecurrenceRule();
-	rule.dayOfWeek = [new schedule.Range(0, 6)];
-	rule.hour = 0;
-	rule.minute = 30;
-
-    schedule.scheduleJob(rule, function(){
-  		mongoApi.cleanDB();
-	});
-
-	var yetAnotherRule = new schedule.RecurrenceRule();
-	yetAnotherRule.minute = 42;
-
-	schedule.scheduleJob(yetAnotherRule, function(){
-  		fetcher.fetchNews();
-	});
 
 	//app.use(limitter);
 
@@ -78,5 +63,5 @@
 	});
 
 	//here fetch news when the app first launch
-	fetcher.fetchNews();
+	//fetcher.fetchNews();
 })()
