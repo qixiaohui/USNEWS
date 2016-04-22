@@ -1,28 +1,13 @@
 {
-  "name": "usnews",
-  "version": "1.0.0",
-  "description": "A node server to grab world news from english website using google search engine",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": ">= 0.10.0"
   },
-  "author": "xiaohui qi",
-  "license": "ISC",
   "devDependencies": {
-    "apicache": "0.0.12",
-    "async": "^2.0.0-rc.3",
-    "body-parser": "^1.15.0",
-    "compression": "^1.6.1",
-    "cors": "^2.7.1",
-    "express": "^4.13.4",
-    "express-rate-limit": "^2.1.2",
-    "mongodb": "^2.1.16",
-    "morgan": "^1.7.0",
-    "node-readability": "^2.2.0",
-    "node-schedule": "^1.1.0",
-    "promised-mongo": "^1.2.0",
-    "request": "^2.71.0",
-    "underscore": "^1.8.3",
-    "x-ray": "^2.2.0"
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-replace": "^1.0.1",
+    "grunt-text-replace": "^0.4.0"
   }
 }
