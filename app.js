@@ -63,5 +63,5 @@
 	});
 
 	//here fetch news when the app first launch
-	//fetcher.fetchNews();
+	fetcher.fetchNews();
 })()
