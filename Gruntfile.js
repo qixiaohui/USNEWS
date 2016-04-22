@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         overwrite: true,
         src: ['./util/url.js', './client/app/scripts/services/service.js'],
         replacements: [{
-          from: 'mongodb://heroku_qdqpxftz:fjn6sspav936frbv4tml0hpmcj@ds013971.mlab.com:13971/heroku_qdqpxftz',                   // string replacement 
+          from: 'mongodb://heroku_9l6cm7s0:p5imro0edhlee80ahcieoar1g5@ds013981.mlab.com:13981/heroku_9l6cm7s0',                   // string replacement 
           to: 'mongodb://localhost:27017/USNEWS'
         },{
           from: 'http://polar-sands-49796.herokuapp.com/news/',                   
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         overwrite: true,
         src: ['./util/url.js', './client/app/scripts/services/service.js'],
         replacements: [{
-          to: 'mongodb://heroku_qdqpxftz:fjn6sspav936frbv4tml0hpmcj@ds013971.mlab.com:13971/heroku_qdqpxftz',                   // string replacement 
+          to: 'mongodb://heroku_9l6cm7s0:p5imro0edhlee80ahcieoar1g5@ds013981.mlab.com:13981/heroku_9l6cm7s0',                   // string replacement 
           from: 'mongodb://localhost:27017/USNEWS'
         },{
           to: 'http://polar-sands-49796.herokuapp.com/news/',                    
