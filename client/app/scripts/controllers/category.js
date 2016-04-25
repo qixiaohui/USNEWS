@@ -14,8 +14,8 @@ angular.module('dingdangApp')
     //which category the page is on
     var genre = dataStore.getCategory();
     $scope.selectedCategory = {};
-    $scope.loadingPagination = {maxIndex:0,pageIndex:1,show:true};
-    $scope.selectedCategory.value = $scope.newsCategories[genre];
+    $scope.loadingPagination = {maxIndex:0,pageIndex:1,show:true};  
+    $scope.selectedCategory.value = $scope.newsCategories[genre[0]].category[genre[1]];
     
     //this will get called either first time load page
     // or from the side bar buttons
@@ -25,14 +25,13 @@ angular.module('dingdangApp')
         }
         
         if(pageIndex === null){
-            pageIndex = dataStore.getPageIndex(genre);
+            pageIndex = 0;
         }
+
         $scope.loadingControl.loading = true;
-        dataStore.setPageIndex(genre, pageIndex);
-        //queryurlIndex: 1,2,3...
-        var queryUrlIndex = genre;
+        var topicName = $scope.selectedCategory.value;
         var promise = new Promise(function(resolve, reject){
-            newsService.readNews(resolve, reject, queryUrlIndex, pageIndex);
+            newsService.readNews(resolve, reject, topicName, pageIndex);
         });
 
         promise.then(function(data){
@@ -48,12 +47,12 @@ angular.module('dingdangApp')
     };
 
     //when user choose different genre
-    $scope.getGenre = function(genr){
+    $scope.getGenre = function(genr, category){
         //genre: 1,2,3..
-        dataStore.setCategory(genr);
-        genre = genr;
+        dataStore.setCategory([genr, category]);
+        genre = [genr, category];
         //value: windows, linux..
-        $scope.selectedCategory.value = $scope.newsCategories[genr];
+        $scope.selectedCategory.value = $scope.newsCategories[genr].category[category];
         //get news from first page
         $scope.getDatastoreNews(0);
     };
@@ -69,6 +68,7 @@ angular.module('dingdangApp')
         window.scrollTo(0, 0);
     };
     
-    $scope.getDatastoreNews(dataStore.getPageIndex(genre));
+    // in the beginning it's 0
+    $scope.getDatastoreNews(0);
 
   });

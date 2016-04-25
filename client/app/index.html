@@ -74,9 +74,18 @@
                     Dingdang news
                 </a>
             </li>
-            <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in newsCategories'>
-                <a ng-click="getGenre($index)">{{category}}</a>
-            </li>
+            <div class="list-group">
+              <div ng-repeat="section in newsCategories">
+                <li style="text-align: left; font-size: 110%">
+                  <a href="#" type="button"  data-toggle="collapse" data-target="{{'#'+section.genre}}" data-parent="#menu">{{section.genre}}<span style="margin-top: 15px; margin-right: 20px" class="glyphicon glyphicon-menu-down pull-right"></span></a>
+                </li>
+                <div id="{{section.genre}}" class="sublinks collapse">
+                  <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in section.category'>
+                      <a ng-click="getGenre($parent.$index, $index)">{{category}}</a>
+                  </li>
+                </div>
+              </div>
+            </div>
         </ul>
     </div>
 
