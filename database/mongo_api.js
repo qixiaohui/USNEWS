@@ -75,6 +75,8 @@ exports.queryCollection = function(resolve, reject, tableName){
 		}
 		db.listCollections({name: tableName})
 	    .next(function(err, collinfo) {
+	    	console.log(tableName);
+	    	console.log("^&*^*"+collinfo);
 	        if (collinfo) {
 				resolve();
 	        }else{

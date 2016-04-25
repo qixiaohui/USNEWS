@@ -22,7 +22,10 @@ angular.module('dingdangApp')
     this.readNews = function(resolve, reject, index, pageIndex){
         $http({
             method: 'GET',
-            url: this.queryUrl[index]
+            url: this.queryUrl[index],
+            headers: {
+                pagination: pageIndex*10+1
+            }
         }).then(function(data){
             resolve(data.data);
         },function(err){
@@ -39,7 +42,6 @@ angular.module('dingdangApp')
             'id': id
           }
         }).then(function(data){
-            debugger;
             resolve(data);
         },function(err){
             reject(err);
@@ -62,8 +64,7 @@ angular.module('dingdangApp')
                      1: 0,
                      2: 0,
                      3: 0,
-                     4: 0,
-                     5: 0};
+                     4: 0};
     
     this.getCategory = function(){
         return this.category;

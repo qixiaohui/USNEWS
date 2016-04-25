@@ -23,8 +23,7 @@
 
 	//var limitter = rateLimit({});
 	var readNews = function(req, res){
-		console.log("news reader");
-		reader.readNews(req.params.tablename, res);
+		reader.readNews(req.params.tablename, req.headers.pagination, res);
 	};
 
 	var scraping = function(req, res){
@@ -36,7 +35,15 @@
 		});
 
 		promise.then(function(){
-			reader.readNews(id, res);
+			var promise1 = new Promise(function(resolve, reject){
+				mongoApi.readNews(id, resolve, reject);
+			});
+			
+			promise1.then(function(val){
+				res.send(val);
+			}).catch(function(){
+				res.send({});
+			});
 		}).catch(function(){
 			scraper.scrape(req, res, link, id);
 		});

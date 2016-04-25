@@ -8,7 +8,8 @@ exports.URL = {
 			cloud: "http://www.faroo.com/api?q=cloud&start=1&length=10&l=en&src=news&f=json"
 		}
 	},
-	baseUrl: "http://www.faroo.com/api?start=1&length=10&l=en&src=news&f=json&q=",
+	baseUrl: "http://www.faroo.com/api?length=10&l=en&src=news&f=json&q=",
 	mongo_base: "mongodb://localhost:27017/USNEWS",
-	apiKey: "&key=@sC6iRyupuTTcmF6Ydd0m@-ONB8_"
+	apiKey: "&key=@sC6iRyupuTTcmF6Ydd0m@-ONB8_",
+	pagination: "&start="
 };

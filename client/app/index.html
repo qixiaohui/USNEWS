@@ -75,7 +75,7 @@
                 </a>
             </li>
             <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in newsCategories'>
-                <a ng-click="getDatastoreNews($index, null)">{{category}}</a>
+                <a ng-click="getGenre($index)">{{category}}</a>
             </li>
         </ul>
     </div>
@@ -90,7 +90,7 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> Powered by IBM watson</p>
+        <p><span class="glyphicon glyphicon-heart"></span> Powered by FAROO</p>
       </div>
     </div>
 
