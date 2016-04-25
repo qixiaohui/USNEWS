@@ -51,7 +51,7 @@
               <span class="icon-bar"></span>
             </button>
               
-            <a class="navbar-brand" href="#/">dingdang</a>
+            <a class="navbar-brand" href="#/">{{selectedCategory.value}}</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -77,9 +77,9 @@
             <div class="list-group">
               <div ng-repeat="section in newsCategories">
                 <li style="text-align: left; font-size: 110%">
-                  <a href="#" type="button"  data-toggle="collapse" data-target="{{'#'+section.genre}}" data-parent="#menu">{{section.genre}}<span style="margin-top: 15px; margin-right: 20px" class="glyphicon glyphicon-menu-down pull-right"></span></a>
+                  <a href="#" type="button" ng-click="isOpen = !isOpen"  data-toggle="collapse" data-target="{{'#'+section.id}}" data-parent="#menu">{{section.genre}}<span style="margin-top: 15px; margin-right: 20px" class="glyphicon pull-right" ng-class="{'glyphicon-menu-down': !isOpen, 'glyphicon-menu-up': isOpen}"></span></a>
                 </li>
-                <div id="{{section.genre}}" class="sublinks collapse">
+                <div id="{{section.id}}" class="sublinks collapse">
                   <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in section.category'>
                       <a ng-click="getGenre($parent.$index, $index)">{{category}}</a>
                   </li>

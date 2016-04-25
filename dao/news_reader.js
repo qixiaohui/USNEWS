@@ -6,6 +6,9 @@ var request  = require('request');
 var exports = module.exports = {};
 
 exports.readNews = function(tableName, pagination, res){
+	if(tableName === 'trending'){
+		tableName = "";
+	}
 	console.log(urls.URL.baseUrl+tableName+urls.URL.apiKey+urls.URL.pagination+pagination);
 	var promise = new Promise(function(resolve, reject){
 		request(urls.URL.baseUrl+tableName+urls.URL.apiKey+urls.URL.pagination+pagination, function(error, response, body){

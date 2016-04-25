@@ -70,6 +70,20 @@ angular.module('dingdangApp')
 .factory('newsCategory', function(){
     return [
         {
+            id: "WORLD_NEWS",
+            genre: "World news",
+            category: [
+            "trending",
+            "world news",
+            "asia",
+            "europe",
+            "north america",
+            "south america",
+            "africa"
+            ]
+        },
+        {
+            id: "SPORTS",
             genre: "Sports",
             category: [
             "basketball",
@@ -80,6 +94,7 @@ angular.module('dingdangApp')
             ]
         },
         {
+            id: "TECHNOLOGY",
             genre: "Technology",
             category: [
             "linux",
