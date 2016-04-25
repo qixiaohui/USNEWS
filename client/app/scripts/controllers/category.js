@@ -36,7 +36,7 @@ angular.module('dingdangApp')
 
         promise.then(function(data){
             $scope.loadingControl.loading = false;
-            $scope.news = data[0].result.docs;
+            $scope.news = data.results;
             $scope.loadingPagination.pageIndex = 1;
             $scope.pagination(data[0].result.docs.length);
             $scope.$digest();

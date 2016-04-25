@@ -1,10 +1,10 @@
 <div ng-repeat="new in news| limitTo:10:(loadingPagination.pageIndex-1)*10" class="row marketing">
     <div class="col-md-3" style="marginTop: 10dp">
-        <img class="img-responsive" ng-src="{{new.source.enriched.url.image}}">
+        <img class="img-responsive" ng-src="{{new.iurl}}">
     </div>
     <div class="col-md-9" href="new.link" ng-click="viewContent(new)">
-        <h4>{{new.source.enriched.url.title}}</h4>
-        <p style="color: #5d5f60">{{new.source.enriched.url.text|limitTo:300}}</p>
+        <h4>{{new.title}}</h4>
+        <p style="color: #5d5f60">{{new.kwic|limitTo:300}}</p>
     </div>
 </div>
 <nav ng-show="loadingPagination.show" class="pagin col-sm-offset-5 col-sm-6">

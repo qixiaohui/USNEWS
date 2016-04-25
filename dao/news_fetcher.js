@@ -20,7 +20,7 @@ var fetchNews = function(){
 				//here we get the url
 				var url = value;
 				setTimeout(function(){
-					request(url, function(error, response, body){
+					request(url+urls.URL.apiKey, function(error, response, body){
 						if(!error && response.statusCode === 200 && JSON.parse(body).status === 'OK'){
 							callback(JSON.parse(body), parentKey, childKey);
 						}
