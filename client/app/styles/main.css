@@ -91,3 +91,8 @@ body {
     background-color: #f3f3f3;
     border-color: #dcdcdc;
 }
+
+.sidebarRows{
+  border-top:0.1px solid #272822;
+  border-bottom:0.1px solid #272822;
+}

@@ -74,6 +74,7 @@ angular.module('dingdangApp')
             genre: "World news",
             category: [
             "trending",
+            "election 2016",
             "world news",
             "asia",
             "europe",
@@ -83,14 +84,48 @@ angular.module('dingdangApp')
             ]
         },
         {
+            id: "BUSINESS",
+            genre: "Business",
+            category: [
+            "accounting",
+            "automotive",
+            "ecommerce",
+            "econmics",
+            "investments",
+            "jobs",
+            "law",
+            "taxes",
+            "trade",
+            "Transportation"
+            ]
+        },
+        {
+            id: "HEALTH",
+            genre: "Health",
+            category: [
+            "addictions",
+            "beauty",
+            "dentistry",
+            "diet",
+            "fitness",
+            "medicine",
+            "vision care",
+            "weight issues"
+            ]
+        }, 
+        {
             id: "SPORTS",
             genre: "Sports",
             category: [
             "basketball",
+            "boxing",
             "football",
+            "golf",
             "soccer",
             "baseball",
-            "hockey"
+            "hockey",
+            "tennis",
+            "UFC"
             ]
         },
         {
@@ -101,7 +136,9 @@ angular.module('dingdangApp')
             "windows",
             "ios",
             "android",
-            "cloud"
+            "programming",
+            "fpga",
+            "embeded system"
             ]
         }
     ];

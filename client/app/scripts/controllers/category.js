@@ -14,6 +14,7 @@ angular.module('dingdangApp')
     //which category the page is on
     var genre = dataStore.getCategory();
     $scope.selectedCategory = {};
+    $scope.invalidQueryError = false;
     $scope.loadingPagination = {maxIndex:0,pageIndex:1,show:true};  
     $scope.selectedCategory.value = $scope.newsCategories[genre[0]].category[genre[1]];
     
@@ -42,6 +43,7 @@ angular.module('dingdangApp')
             $scope.$digest();
         }).catch(function(err){
             console.error(JSON.stringify(err));
+            $scope.loadingControl.loading = false;
             $scope.$digest();
         });        
     };
@@ -66,6 +68,40 @@ angular.module('dingdangApp')
         $scope.loadingControl.loading = true;
         $scope.getDatastoreNews(pageIndex-1);
         window.scrollTo(0, 0);
+    };
+
+    $scope.searchTopic = function(topic){
+        $scope.loadingControl.loading = true;
+        //when input is empty
+        if(topic === undefined){
+            $scope.invalidQueryError = true;
+            $scope.loadingControl.loading = false;
+            return;
+        }
+        topic = topic.replace(/[\/=():;]/g, '');
+        //when input contain only invalid characters
+        if(topic === ''){
+            $scope.invalidQueryError = true;
+            $scope.loadingControl.loading = false;
+            $scope.topic = '';
+            return;
+        }
+        $scope.selectedCategory.value = topic;
+        var promise = new Promise(function(resolve, reject){
+            newsService.readNews(resolve, reject, topic, 0);
+        });
+
+        promise.then(function(data){
+            $scope.loadingControl.loading = false;
+            $scope.news = data.results;
+            $scope.loadingPagination.pageIndex = 1;
+            $scope.pagination(data.count);
+            $scope.$digest();
+        }).catch(function(err){
+            console.log(JSON.stringify(err));
+            $scope.loadingControl.loading = false;
+            $scope.$digest();
+        });
     };
     
     // in the beginning it's 0

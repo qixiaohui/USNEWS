@@ -16,4 +16,5 @@ angular.module('dingdangApp')
         newsService.setContent(content);
         $location.path("/content");
     };
+    
   });

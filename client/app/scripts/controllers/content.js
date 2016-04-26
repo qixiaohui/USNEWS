@@ -13,9 +13,9 @@ angular.module('dingdangApp')
     $scope.paragraph = {};
     $scope.loadingControl.loading = true;
     $scope.paragraph.content = newsService.getContent();
-    
     var promise = new Promise(function(resolve, reject){
-        newsService.readContent(resolve, reject, newsService.getContent().url, newsService.getContent().title);
+        var id = newsService.getContent().title.replace(/\W/g,'');
+        newsService.readContent(resolve, reject, newsService.getContent().url, id);
     });
     
     promise.then(function(data){
