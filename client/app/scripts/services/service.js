@@ -9,7 +9,7 @@
  */
 angular.module('dingdangApp')
   .service('newsService', function ($http) {
-    this.baseUrl = "http://localhost:2000";
+    this.baseUrl = "http://polar-sands-49796.herokuapp.com";
     this.newsUrl = "/news/";
     this.contentUrl = "/content";
     this.content = "";
