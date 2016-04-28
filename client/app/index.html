@@ -80,7 +80,7 @@
                   <a href="#" type="button" ng-click="isOpen = !isOpen"  data-toggle="collapse" data-target="{{'#'+section.id}}" data-parent="#menu">{{section.genre}}<span style="margin-top: 15px; margin-right: 20px" class="glyphicon pull-right" ng-class="{'glyphicon-menu-down': !isOpen, 'glyphicon-menu-up': isOpen}"></span></a>
                 </li>
                 <div id="{{section.id}}" class="sublinks collapse">
-                  <li ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in section.category'>
+                  <li  style="margin-left: 20px" ng-class="{sidebarSelected: selectedCategory.value == category}" ng-repeat='category in section.category'>
                       <a ng-click="getGenre($parent.$index, $index)">{{category}}</a>
                   </li>
                 </div>

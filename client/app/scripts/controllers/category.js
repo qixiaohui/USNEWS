@@ -87,6 +87,7 @@ angular.module('dingdangApp')
             return;
         }
         $scope.selectedCategory.value = topic;
+        $scope.topic = "";
         var promise = new Promise(function(resolve, reject){
             newsService.readNews(resolve, reject, topic, 0);
         });
