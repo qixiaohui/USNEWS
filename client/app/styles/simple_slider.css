@@ -168,6 +168,10 @@
         margin-top: 10px;
     }
 
+    #appLogo{
+        display: none;
+    }
+
 }
 
 .loadingIcon{

@@ -7,8 +7,7 @@
  * # MainCtrl
  * Controller of the dingdangApp
  */
-angular.module('dingdangApp')
-  .controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsService, $location) {
+app.controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsService, $location, $translate) {
     $scope.loadingControl = {loading: true};
     $scope.newsCategories = newsCategory;
     //which category the page is on
@@ -113,5 +112,7 @@ angular.module('dingdangApp')
         $scope.showSideBarButton=!$scope.showSideBarButton;
         $scope.showSideBarButton?$scope.buttonStyle={width: "0px"}:$scope.buttonStyle={width: "250px"};
     };
+    var language = window.navigator.userLanguage || window.navigator.language;
+    $translate.use(language);
 
   });

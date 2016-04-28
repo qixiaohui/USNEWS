@@ -23,7 +23,7 @@
 
 	//var limitter = rateLimit({});
 	var readNews = function(req, res){
-		reader.readNews(req.params.tablename, req.headers.pagination, res);
+		reader.readNews(req.params.tablename, req.headers.pagination, req.headers.language, res);
 	};
 
 	var scraping = function(req, res){

@@ -6,8 +6,7 @@
  * @description
  * # cardDirective
  */
-angular.module('dingdangApp')
-  .directive('cardDirective', function () {
+app.directive('cardDirective', function () {
     return {
       template: '<div></div>',
       restrict: 'E',

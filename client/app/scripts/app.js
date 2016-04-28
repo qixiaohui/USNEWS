@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('dingdangApp', [
     'ngAnimate',
     'ngCookies',
@@ -16,9 +16,10 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'pascalprecht.translate'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
     $stateProvider
       .state('base', {
         url: '/base',
@@ -34,4 +35,21 @@ angular
       $urlRouterProvider.otherwise(
         '/base'
       );
+
+    $translateProvider.translations('en', {
+      home: 'Home',
+      about: 'About',
+      contact: 'Contact',
+      visitWebsite: 'Visit Website'
+    });
+
+    $translateProvider.translations('zh', {
+      home: '主页',
+      about: '关于',
+      contact: '联系方式',
+      visitWebsite: '原链接'
+    });
+
+    $translateProvider.useSanitizeValueStrategy('sanitize');
+
   });

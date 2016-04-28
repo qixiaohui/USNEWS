@@ -7,8 +7,7 @@
  * # MainCtrl
  * Controller of the dingdangApp
  */
-angular.module('dingdangApp')
-  .controller('MainCtrl', function ($scope, $location, dataStore, newsService) {
+app.controller('MainCtrl', function ($scope, $location, dataStore, newsService) {
     
     $scope.viewContent = function(content){
         //set the content of the specific paragraph

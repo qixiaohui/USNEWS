@@ -7,8 +7,7 @@
  * # MainCtrl
  * Controller of the dingdangApp
  */
-angular.module('dingdangApp')
-  .controller('ContentCtrl', function (newsService, $scope, $location, $window) {
+app.controller('ContentCtrl', function (newsService, $scope, $location, $window, $translate) {
     $scope.content = {};
     $scope.paragraph = {};
     $scope.loadingControl.loading = true;
