@@ -17,6 +17,7 @@ angular.module('dingdangApp')
     $scope.invalidQueryError = false;
     $scope.loadingPagination = {maxIndex:0,pageIndex:1,show:true};  
     $scope.selectedCategory.value = $scope.newsCategories[genre[0]].category[genre[1]];
+    $scope.showSideBarButton = true;
     
     //this will get called either first time load page
     // or from the side bar buttons
@@ -107,5 +108,10 @@ angular.module('dingdangApp')
     
     // in the beginning it's 0
     $scope.getDatastoreNews(0);
+
+    $scope.toggleMenu = function(){
+        $scope.showSideBarButton=!$scope.showSideBarButton;
+        $scope.showSideBarButton?$scope.buttonStyle={width: "0px"}:$scope.buttonStyle={width: "250px"};
+    };
 
   });
