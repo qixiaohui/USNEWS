@@ -15,9 +15,9 @@ exports.readNews = function(tableName, pagination, language, res){
 	}else{
 		language = '&l=en';
 	}
-	console.log(urls.URL.baseUrl+tableName+urls.URL.apiKey+urls.URL.pagination+pagination);
+	console.log(encodeURI(urls.URL.baseUrl+tableName+urls.URL.apiKey+urls.URL.pagination+pagination+language));
 	var promise = new Promise(function(resolve, reject){
-		request(urls.URL.baseUrl+tableName+urls.URL.apiKey+urls.URL.pagination+pagination+language, function(error, response, body){
+		request(encodeURI(urls.URL.baseUrl+tableName+urls.URL.apiKey+urls.URL.pagination+pagination+language), function(error, response, body){
 			if(!error && response.statusCode === 200){
 				resolve(response.body);
 			}else{

@@ -136,6 +136,16 @@ app.service('newsService', function ($http) {
                 "fpga",
                 "嵌入式系统"
                 ]
+            },
+            {
+                id: "ENTERTAINMENT",
+                genre: "娱乐",
+                category: [
+                "电影",
+                "电视剧",
+                "音乐",
+                "游戏"
+                ]
             }
         ];
     }else{
@@ -211,6 +221,16 @@ app.service('newsService', function ($http) {
                 "fpga",
                 "embeded system"
                 ]
+            },
+            {
+                id: "ENTERTAINMENT",
+                genre: "Entertainment",
+                category: [
+                "movie",
+                "TV series",
+                "music",
+                "video games"
+                ]                
             }
         ];        
     }

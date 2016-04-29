@@ -30,6 +30,9 @@ var insertCollection = function(data, tableName, db){
 
 exports.insertContent = function(data, tableName){
 	mongoClient.connect(urls.URL.mongo_base, function(err, db){
+		if(tableName === null || tableName === ''){
+			return;
+		}
 		var collection = db.collection(tableName);
 		collection.insert({content: data}, function(){
 			console.log("Successfully insert content "+tableName);

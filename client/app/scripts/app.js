@@ -50,6 +50,6 @@ var app = angular
       visitWebsite: '原链接'
     });
 
-    $translateProvider.useSanitizeValueStrategy('sanitize');
+    $translateProvider.useSanitizeValueStrategy(null);
 
   });
