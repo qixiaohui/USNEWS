@@ -113,6 +113,6 @@ app.controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsSe
         $scope.showSideBarButton?$scope.buttonStyle={width: "0px"}:$scope.buttonStyle={width: "250px"};
     };
     var language = window.navigator.userLanguage || window.navigator.language;
-    $translate.use(language);
+    $translate.use(language.substring(0, 2));
 
   });
