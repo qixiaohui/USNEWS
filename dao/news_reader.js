@@ -5,7 +5,7 @@ var urls = require('../util/url');
 var request  = require('request');
 var exports = module.exports = {};
 
-exports.readNews = function(tableName, pagination, language, res){
+exports.readNews = function(tableName, pagination, language, callback){
 	if(tableName === 'trending'){
 		tableName = "";
 	}
@@ -28,10 +28,10 @@ exports.readNews = function(tableName, pagination, language, res){
 
 	promise.then(function(val){
 		//send news data 
-		res.send(val);
+		callback(null, JSON.parse(val));
 	}).catch(function(){
 		//if reject send empty obj
-		res.send({});
+		callback(null, {});
 	});
 	
 };

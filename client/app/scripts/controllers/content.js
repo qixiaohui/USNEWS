@@ -18,7 +18,6 @@ app.controller('ContentCtrl', function (newsService, $scope, $location, $window,
     });
     
     promise.then(function(data){
-        console.log(data.data);
         if(data !== {}){
             $scope.paragraph.p = data.data[0].content;
             $scope.loadingControl.loading = false;

@@ -8,6 +8,8 @@
 	var compress = require('compression');
 	var cors = require('cors');
 	var logger = require('morgan');
+	var cacheManager = require('cache-manager');
+	var memCache = cacheManager.caching({store: 'memory', max: 1000000000, ttl: 3600});
 	var port = 2000;
 	var fetcher = require('./dao/news_fetcher');
 	var reader = require('./dao/news_reader');
@@ -23,7 +25,15 @@
 
 	//var limitter = rateLimit({});
 	var readNews = function(req, res){
-		reader.readNews(req.params.tablename, req.headers.pagination, req.headers.language, res);
+		var cacheKey = req.params.tablename+req.headers.pagination+req.headers.language;
+		memCache.wrap(cacheKey, function(callback){
+			reader.readNews(req.params.tablename, req.headers.pagination, req.headers.language, callback);
+		},function(err, data){
+			if(err){
+				res.send({});
+			}
+			res.send(data);
+		});
 	};
 
 	var scraping = function(req, res){

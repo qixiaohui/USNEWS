@@ -69,7 +69,7 @@ app.service('newsService', function ($http) {
 // return news categpry
 .factory('newsCategory', function(){
     var language = window.navigator.userLanguage || window.navigator.language;
-    if(language === 'zh-CN' || language === 'zh-TW'){
+    if(language.substring(0, 2) === 'zh'){
         return[
             {
                 id: "WORLD_NEWS",
