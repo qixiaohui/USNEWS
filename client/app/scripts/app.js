@@ -40,14 +40,16 @@ var app = angular
       home: 'Home',
       about: 'About',
       contact: 'Contact',
-      visitWebsite: 'Visit Website'
+      visitWebsite: 'Visit Website',
+      appName: 'Dingdang news'
     });
 
     $translateProvider.translations('zh', {
       home: '主页',
       about: '关于',
       contact: '联系方式',
-      visitWebsite: '原链接'
+      visitWebsite: '原链接',
+      appName: '叮噹新闻'
     });
 
     $translateProvider.useSanitizeValueStrategy(null);
