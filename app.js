@@ -15,6 +15,8 @@
 	var reader = require('./dao/news_reader');
 	var scraper = require('./dao/news_scraper');
 	var mongoApi = require('./database/mongo_api');
+	var zh = require('./model/zh');
+	var en = require('./model/en');
 
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
@@ -34,6 +36,16 @@
 			}
 			res.send(data);
 		});
+	};
+
+	//return menu list based on language
+	var returnMenu = function(req, res){
+		var langage = req.params.language;
+		if(langage === 'zh'){
+			res.send(zh.menu);
+		}else{
+			res.send(en.menu);
+		}
 	};
 
 	var scraping = function(req, res){
@@ -66,6 +78,8 @@
 	app.use(cors());
 
 	app.get('/news/:tablename', readNews);
+
+	app.get('/menu/:language', returnMenu);
 
 	app.get('/content', scraping);
 

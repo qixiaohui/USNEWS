@@ -9,13 +9,17 @@
  */
 app.controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsService, $location, $translate) {
     $scope.loadingControl = {loading: true};
-    $scope.newsCategories = newsCategory;
+    newsCategory.success(function(response){
+        $scope.newsCategories = response;
+        $scope.selectedCategory.value = $scope.newsCategories[genre[0]].category[genre[1]];
+    }).error(function(){
+        $scope.newsCategories = [];
+    });
     //which category the page is on
     var genre = dataStore.getCategory();
     $scope.selectedCategory = {};
     $scope.invalidQueryError = false;
     $scope.loadingPagination = {maxIndex:0,pageIndex:1,show:true};  
-    $scope.selectedCategory.value = $scope.newsCategories[genre[0]].category[genre[1]];
     $scope.showSideBarButton = true;
     
     //this will get called either first time load page
