@@ -33,6 +33,9 @@ exports.insertContent = function(data, tableName){
 		if(tableName === null || tableName === ''){
 			return;
 		}
+		if(db === null){
+			return;
+		}
 		var collection = db.collection(tableName);
 		collection.insert({content: data}, function(){
 			console.log("Successfully insert content "+tableName);
@@ -49,6 +52,9 @@ exports.readNews = function(tableName, resolve, reject){
 var readCollection = function(tableName, db, resolve, reject){
 	var collection = db.collection(tableName);
 
+	if(db === null){
+		reject();
+	}
     collection.find({}).toArray(function(err, docs){
     	if(err){
     		reject();
@@ -74,6 +80,9 @@ exports.cleanDB = function(){
 exports.queryCollection = function(resolve, reject, tableName){
 	mongoClient.connect(urls.URL.mongo_base, function(err, db){
 		if(err){
+			reject();
+		}
+		if(db === null){
 			reject();
 		}
 		db.listCollections({name: tableName})
