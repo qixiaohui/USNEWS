@@ -27,6 +27,7 @@
 
 	//var limitter = rateLimit({});
 	var readNews = function(req, res){
+		console.log(req.headers.pagination);
 		var cacheKey = req.params.tablename+req.headers.pagination+req.headers.language;
 		memCache.wrap(cacheKey, function(callback){
 			reader.readNews(req.params.tablename, req.headers.pagination, req.headers.language, callback);
