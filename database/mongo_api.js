@@ -16,6 +16,9 @@ exports.insertNews = function(data, parentKey, childKey){
 };
 
 var insertCollection = function(data, tableName, db){
+	if(db === null){
+		return;
+	}
 	var collection = db.collection(tableName);
 	if(typeof data === 'string'){
 		data = JSON.parse(data);
@@ -36,12 +39,12 @@ exports.insertContent = function(data, tableName){
 		}
 		if(db === null){
 			return;
-		}else{
-			var collection = db.collection(tableName);
-			collection.insert({content: data}, function(){
-				console.log("Successfully insert content "+tableName);
-			});
 		}
+		var collection = db.collection(tableName);
+		collection.insert({content: data}, function(){
+			console.log("Successfully insert content "+tableName);
+		});
+
 	});
 };
 
@@ -74,6 +77,9 @@ exports.cleanDB = function(){
 
 		var date = new Date();
 		date.setDate(date.getDate() - 1);
+		if(db === null){
+			return;
+		}
 		// clear data from yesterday
 		db.user_track.remove( { access_time : {"$lt" : date } });
 
