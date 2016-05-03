@@ -19,13 +19,14 @@ var insertCollection = function(data, tableName, db){
 	var collection = db.collection(tableName);
 	if(typeof data === 'string'){
 		data = JSON.parse(data);
+	}else{}
+		//first drop the collection no matter exist or not
+		collection.drop();
+		console.log("insert db "+tableName);
+		collection.insert(data,function(){
+	        console.log("Successfully inserted "+tableName);
+	    });
 	}
-	//first drop the collection no matter exist or not
-	collection.drop();
-	console.log("insert db "+tableName);
-	collection.insert(data,function(){
-        console.log("Successfully inserted "+tableName);
-    });
 };
 
 exports.insertContent = function(data, tableName){
@@ -35,11 +36,12 @@ exports.insertContent = function(data, tableName){
 		}
 		if(db === null){
 			return;
+		}else{
+			var collection = db.collection(tableName);
+			collection.insert({content: data}, function(){
+				console.log("Successfully insert content "+tableName);
+			});
 		}
-		var collection = db.collection(tableName);
-		collection.insert({content: data}, function(){
-			console.log("Successfully insert content "+tableName);
-		});
 	});
 };
 
@@ -54,13 +56,14 @@ var readCollection = function(tableName, db, resolve, reject){
 
 	if(db === null){
 		reject();
+	}else{
+	    collection.find({}).toArray(function(err, docs){
+	    	if(err){
+	    		reject();
+	    	}
+	    	resolve(docs);
+	    });
 	}
-    collection.find({}).toArray(function(err, docs){
-    	if(err){
-    		reject();
-    	}
-    	resolve(docs);
-    });
 };
 
 exports.cleanDB = function(){
@@ -84,14 +87,15 @@ exports.queryCollection = function(resolve, reject, tableName){
 		}
 		if(db === null){
 			reject();
+		}else{
+			db.listCollections({name: tableName})
+		    .next(function(err, collinfo) {
+		        if (collinfo) {
+					resolve();
+		        }else{
+					reject();
+		        }
+		    });
 		}
-		db.listCollections({name: tableName})
-	    .next(function(err, collinfo) {
-	        if (collinfo) {
-				resolve();
-	        }else{
-				reject();
-	        }
-	    });
 	});
 };
