@@ -19,7 +19,7 @@ var insertCollection = function(data, tableName, db){
 	var collection = db.collection(tableName);
 	if(typeof data === 'string'){
 		data = JSON.parse(data);
-	}else{}
+	}else{
 		//first drop the collection no matter exist or not
 		collection.drop();
 		console.log("insert db "+tableName);
