@@ -22,6 +22,14 @@ app.controller('ContentCtrl', function (newsService, $scope, $location, $window,
             $scope.paragraph.p = data.data[0].content;
             $scope.loadingControl.loading = false;
             $scope.$apply();
+            var pContent = document.getElementById('pContent');
+            var image = pContent.getElementsByTagName('img');
+            [].forEach.call(image, function(el) {
+                el.removeAttribute('width');
+                el.removeAttribute('height');
+                el.style.width = "100%";
+            });
+            $scope.$apply();
         }else{
             
         }
