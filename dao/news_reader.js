@@ -10,7 +10,7 @@ exports.readNews = function(tableName, pagination, language, callback){
 		tableName = "";
 	}
 
-	if(['zh-CN', 'zh-TW'].indexOf(language) > -1){
+	if(['zh-CN', 'zh-TW', 'zh'].indexOf(language) > -1){
 		language = '&l=zh';
 	}else{
 		language = '&l=en';

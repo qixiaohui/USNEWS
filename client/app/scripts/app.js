@@ -41,7 +41,8 @@ var app = angular
       about: 'About',
       contact: 'Contact',
       visitWebsite: 'Visit Website',
-      appName: 'Dingdang news'
+      appName: 'Dingdang news',
+      searchTopic: 'Search topic'
     });
 
     $translateProvider.translations('zh', {
@@ -49,7 +50,8 @@ var app = angular
       about: '关于',
       contact: '联系方式',
       visitWebsite: '原链接',
-      appName: '叮噹新闻'
+      appName: '叮噹新闻',
+      searchTopic: '搜索新闻'
     });
 
     $translateProvider.useSanitizeValueStrategy(null);
