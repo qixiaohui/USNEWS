@@ -12,6 +12,8 @@ app.controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsSe
     newsCategory.success(function(response){
         $scope.newsCategories = response;
         $scope.selectedCategory.value = $scope.newsCategories[genre[0]].category[genre[1]];
+            // in the beginning it's 0
+        $scope.getDatastoreNews(0);
     }).error(function(){
         $scope.newsCategories = [];
     });
@@ -108,9 +110,6 @@ app.controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsSe
             $scope.$digest();
         });
     };
-    
-    // in the beginning it's 0
-    $scope.getDatastoreNews(0);
 
     $scope.toggleMenu = function(){
         $scope.showSideBarButton=!$scope.showSideBarButton;

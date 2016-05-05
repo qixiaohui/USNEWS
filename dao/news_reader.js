@@ -6,7 +6,7 @@ var request  = require('request');
 var exports = module.exports = {};
 
 exports.readNews = function(tableName, pagination, language, callback){
-	if(tableName === 'trending'){
+	if(tableName === 'trending' || tableName === '热门新闻'){
 		tableName = "";
 	}
 
