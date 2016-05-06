@@ -84,6 +84,12 @@
 
 	app.get('/content', scraping);
 
+	app.get('/downloadApk', function(req, res){
+	  var file = 'files/dingdangnews.apk';
+	  res.setHeader('Content-disposition', 'attachment; filename=dingdangnews.apk');
+	  res.download(file); // Set disposition and send it.
+	});
+
 	app.use(express.static('./client/app/'));
 
     app.get('/', function(req, res) {

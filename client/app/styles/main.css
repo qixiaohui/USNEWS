@@ -96,3 +96,7 @@ body {
   border-top:0.1px solid #272822;
   border-bottom:0.1px solid #272822;
 }
+
+.aboutFont {
+  font-size: 15px;
+}
