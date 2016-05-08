@@ -100,3 +100,15 @@ body {
 .aboutFont {
   font-size: 15px;
 }
+
+#author {
+  float: left;
+  font-size: 12px;
+  color: #a9abae;
+}
+
+#domain {
+  float: right;
+  font-size: 12px;
+  color: #848a91;
+}
