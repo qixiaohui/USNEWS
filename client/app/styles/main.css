@@ -80,6 +80,10 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+  .sideBarAbout {
+    display: none;
+  }
 }
 
 .btn-secondary {
@@ -111,4 +115,8 @@ body {
   float: right;
   font-size: 12px;
   color: #848a91;
+}
+
+.about {
+  margin-top: 70px;
 }
