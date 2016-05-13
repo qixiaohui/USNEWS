@@ -63,7 +63,9 @@ app.controller('categoryCtrl', function (newsCategory, $scope, dataStore, newsSe
         $scope.selectedCategory.value = $scope.newsCategories[genr].category[category];
         //get news from first page
         $scope.getDatastoreNews(0);
-        $scope.toggleMenu();
+        if($( window ).width() <= 768){
+            $scope.toggleMenu();
+        }
     };
     
     $scope.pagination = function(maxCount){

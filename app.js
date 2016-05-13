@@ -28,6 +28,7 @@
 	//var limitter = rateLimit({});
 	var readNews = function(req, res){
 		console.log(req.headers.pagination);
+		console.log(req.headers.language+"read")
 		var cacheKey = req.params.tablename+req.headers.pagination+req.headers.language;
 		memCache.wrap(cacheKey, function(callback){
 			reader.readNews(req.params.tablename, req.headers.pagination, req.headers.language, callback);
@@ -42,6 +43,7 @@
 	//return menu list based on language
 	var returnMenu = function(req, res){
 		var langage = req.params.language;
+		console.log(req.params.langage+"menu");
 		if(langage === 'zh'){
 			res.send(zh.menu);
 		}else{
