@@ -82,7 +82,7 @@
 		res.header('Access-Control-Allow-Origin', '*');
 		res.header('Charset', 'utf8');
 
-        fs.readFile('./overwatch/Json/'+fileName, 'utf8', function (err, data) {
+        fs.readFile('./json/heros.json', 'utf8', function (err, data) {
 	        if (err) {
         		res.send([]);
 	            return;
