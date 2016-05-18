@@ -8,6 +8,7 @@
 	var compress = require('compression');
 	var cors = require('cors');
 	var logger = require('morgan');
+	var fs = require('fs');
 	var cacheManager = require('cache-manager');
 	var memCache = cacheManager.caching({store: 'memory', max: 1000000000, ttl: 3600});
 	var port = 2000;
@@ -80,10 +81,15 @@
 		res.header('Access-Control-Allow-Headers', '*');
 		res.header('Access-Control-Allow-Origin', '*');
 		res.header('Charset', 'utf8');
-	    
-	    daoController.getDataFromFile('./json/heros.json',function(heros){
-			res.send(heros);
-		});
+
+        fs.readFile('./overwatch/Json/'+fileName, 'utf8', function (err, data) {
+	        if (err) {
+        		res.send([]);
+	            return;
+	        }
+
+	        res.send(data);
+		}
 	}
 
 
