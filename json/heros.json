@@ -1,0 +1,23 @@
+[
+	{"key": "GENJI", "heroname": "Genji","imgPath": "Genji.png"},
+	{"key": "MCCREE", "heroname": "Mccree","imgPath": "Mccree.png"},
+	{"key": "PHARAH", "heroname": "Pharah","imgPath": "Pharah.png"},
+	{"key": "REAPER", "heroname": "Reaper","imgPath": "Reaper.png"},
+	{"key": "SOLDiER:76", "heroname": "Soldier:76","imgPath": "Soldier76.png"},
+	{"key": "TRACER", "heroname": "Tracer","imgPath": "Tracer.png"},
+	{"key": "BASTION", "heroname": "Bastion","imgPath": "Bastion.png"},
+	{"key": "HANZO", "heroname": "Hanzo","imgPath": "Hanzo.png"},
+	{"key": "JUNKRAT", "heroname": "Junkrat","imgPath": "Junkrat.png"},
+	{"key": "MEI", "heroname": "Mei","imgPath": "Mei.png"},
+	{"key": "TORBJORN", "heroname": "Torbjorn","imgPath": "Torbjorn.png"},
+	{"key": "WIDOWMAKER", "heroname": "Widowmaker","imgPath": "Widowmaker.png"},
+	{"key": "DVA", "heroname": "D.Va","imgPath": "Dva.png"},
+	{"key": "REINHARDT", "heroname": "Reinhardt","imgPath": "Reinhardt.png"},
+	{"key": "ROADHOG", "heroname": "Roadhog","imgPath": "Roadhog.png"},
+	{"key": "WINSTON", "heroname": "Winston","imgPath": "Winston.png"},
+	{"key": "ZARYA", "heroname": "Zarya","imgPath": "Zarya.png"},
+	{"key": "LUCIO", "heroname": "Lucio","imgPath": "Lucio.png"},
+	{"key": "MERCY", "heroname": "Mercy","imgPath": "Mercy.png"},
+	{"key": "SYMMETRA", "heroname": "Symmetra","imgPath": "Symmetra.png"},
+	{"key": "ZENYATTA", "heroname": "Zenyatta","imgPath": "Zenyatta.png"}
+]

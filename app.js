@@ -75,6 +75,17 @@
 
 	};
 
+	var getHeros = function(req, res){
+		res.header('Content-type', 'application/json');
+		res.header('Access-Control-Allow-Headers', '*');
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Charset', 'utf8');
+	    
+	    daoController.getDataFromFile('./json/heros.json',function(heros){
+			res.send(heros);
+		});
+	}
+
 
 	//app.use(limitter);
 
@@ -83,6 +94,8 @@
 	app.get('/news/:tablename', readNews);
 
 	app.get('/menu/:language', returnMenu);
+
+	app.get('/heros/allheros', getHeros)
 
 	app.get('/content', scraping);
 
