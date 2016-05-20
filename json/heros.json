@@ -8,7 +8,7 @@
 	{"key": "BASTION", "heroname": "Bastion","imgPath": "bastion"},
 	{"key": "HANZO", "heroname": "Hanzo","imgPath": "hanzo"},
 	{"key": "JUNKRAT", "heroname": "Junkrat","imgPath": "junkrat"},
-	{"key": "MEI", "heroname": "Mei","imgPath": "Mei"},
+	{"key": "MEI", "heroname": "Mei","imgPath": "mei"},
 	{"key": "TORBJORN", "heroname": "Torbjorn","imgPath": "torbjorn"},
 	{"key": "WIDOWMAKER", "heroname": "Widowmaker","imgPath": "widowmaker"},
 	{"key": "DVA", "heroname": "D.Va","imgPath": "dva"},
