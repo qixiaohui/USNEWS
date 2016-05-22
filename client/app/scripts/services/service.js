@@ -8,7 +8,7 @@
  * Service in the dingdangApp.
  */
 app.service('newsService', function ($http) {
-    this.baseUrl = "http://localhost:2000";
+    this.baseUrl = "http://polar-sands-49796.herokuapp.com";
     this.newsUrl = "/news/";
     this.contentUrl = "/content";
     this.content = "";
@@ -68,7 +68,7 @@ app.service('newsService', function ($http) {
 
 // return news categpry
 .factory('newsCategory', function($http){
-    this.baseUrl = "http://localhost:2000";
+    this.baseUrl = "http://polar-sands-49796.herokuapp.com";
     this.menu = "/menu/";
     var language = window.navigator.userLanguage || window.navigator.language;
     return $http.get(this.baseUrl+this.menu+language.substring(0, 2));
