@@ -18,6 +18,7 @@
 	var mongoApi = require('./database/mongo_api');
 	var zh = require('./model/zh');
 	var en = require('./model/en');
+	var twitter = require('./dao/twit');
 
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
@@ -90,7 +91,24 @@
 
 	        res.send(data);
 		});
-	}
+	};
+
+	var twit = function(req, res) {
+		res.header('Content-type', 'application/json');
+		res.header('Access-Control-Allow-Headers', '*');
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Charset', 'utf8');
+
+		var cacheKey = req.headers.q + req.headers.count;
+
+	  //use memory cache to cache call
+	  //headers {q:,count:}
+		memCache.wrap(cacheKey, function(callback){
+			twitter.getTwits(req, callback);
+		},function(err, data){
+			res.send(data);
+		});
+	};
 
 
 	//app.use(limitter);
@@ -104,6 +122,9 @@
 	app.get('/heros/allheros', getHeros)
 
 	app.get('/content', scraping);
+
+		//Router to get twits
+	app.get('/allTwits', twit);
 
 	app.get('/downloadApk', function(req, res){
 	  var file = 'files/dingdangnews.apk';
