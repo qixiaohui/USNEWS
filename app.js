@@ -19,6 +19,8 @@
 	var zh = require('./model/zh');
 	var en = require('./model/en');
 	var twitter = require('./dao/twit');
+	var apicache = require('apicache').options({debug: true}).middleware;
+	var showtimes = require('showtimes');
 
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
@@ -110,6 +112,35 @@
 		});
 	};
 
+	var mockNews = function(req, res){
+        fs.readFile('./json/news.json', 'utf8', function (err, data) {
+	        if (err) {
+        		res.send([]);
+	            return;
+	        }
+
+	        res.send(data);
+		});		
+	};
+
+	app.get('/schedule/theaters/:name/:zip/:day', apicache('1 day'), function(req, res){
+	    req.apicacheGroup = req.params.name+req.params.zip+req.params.day;
+	    let name = req.params.name;
+	    let zip = req.params.zip;
+	    let day = req.params.day;
+
+	    var api = new showtimes(zip.zip_code, {date: day});
+
+	    api.getTheaters((err, theaters) => {
+	        if(err){
+	            res.status(400).send('Ooops something went wrong');
+	            return;
+	        }
+
+	        res.send(theaters);
+	    });
+	});
+
 
 	//app.use(limitter);
 
@@ -122,6 +153,9 @@
 	app.get('/heros/allheros', getHeros)
 
 	app.get('/content', scraping);
+
+	//mock data for news
+	app.get('/news', mockNews);
 
 		//Router to get twits
 	app.get('/allTwits', twit);
