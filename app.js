@@ -129,7 +129,8 @@
 	    let zip = req.params.zip;
 	    let day = req.params.day;
 
-	    var api = new showtimes(zip.zip_code, {date: day});
+	    var api = new showtimes(zip, {date: day});
+	    console.log();
 
 	    api.getTheaters((err, theaters) => {
 	        if(err){
