@@ -1,11 +1,25 @@
 {
+  "name": "DingDang",
+  "version": "0.1.0",
   "engines": {
     "node": ">= 0.10.0"
+  },
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "grunt dev & node app.js",
+    "build": "grunt deploy & node app.js"
   },
   "devDependencies": {
     "apicache": "0.0.14",
     "cache-manager": "^2.0.1",
     "fs": "0.0.2",
+    "async": "^2.0.0-rc.6",
+    "body-parser": "^1.15.2",
+    "cache-manager": "^2.1.2",
+    "compression": "^1.6.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
@@ -13,6 +27,13 @@
     "grunt-replace": "^1.0.1",
     "grunt-text-replace": "^0.4.0",
     "showtimes": "^2.1.2",
-    "twit": "^2.2.4"
+    "twit": "^2.2.4",
+    "mongodb": "^2.1.18",
+    "morgan": "^1.7.0",
+    "node-readability": "^2.2.0",
+    "node-schedule": "^1.1.1",
+    "promised-mongo": "^1.2.0",
+    "request": "^2.72.0",
+    "x-ray": "^2.3.0"
   }
 }
