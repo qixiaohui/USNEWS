@@ -21,6 +21,7 @@
 	var twitter = require('./dao/twit');
 	var apicache = require('apicache').options({debug: true}).middleware;
 	var showtimes = require('showtimes');
+	var movieScrapper = require('./util/Scrapper');
 
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
@@ -129,17 +130,7 @@
 	    let zip = req.params.zip;
 	    let day = req.params.day;
 
-	    var api = new showtimes(zip, {date: day});
-	    console.log();
-
-	    api.getTheaters((err, theaters) => {
-	        if(err){
-	            res.status(400).send('Ooops something went wrong');
-	            return;
-	        }
-
-	        res.send(theaters);
-	    });
+		movieScrapper.showTimes(zip, day, name, res);
 	});
 
 
